@@ -15,6 +15,11 @@
 		BF2C08B92112E1E80033A697 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF2C08B72112E1E80033A697 /* Main.storyboard */; };
 		BF2C08BB2112E1EA0033A697 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF2C08BA2112E1EA0033A697 /* Assets.xcassets */; };
 		BF2C08BE2112E1EA0033A697 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF2C08BC2112E1EA0033A697 /* LaunchScreen.storyboard */; };
+		BF2C08C721143BD80033A697 /* MyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2C08C621143BD80033A697 /* MyScene.swift */; };
+		BF2C08C9211444D60033A697 /* ResultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2C08C8211444D60033A697 /* ResultScene.swift */; };
+		BF2C08CD21144ADF0033A697 /* background-music-aac.caf in Resources */ = {isa = PBXBuildFile; fileRef = BF2C08CB21144ADF0033A697 /* background-music-aac.caf */; };
+		BF2C08CE21144ADF0033A697 /* pew-pew-lei.caf in Resources */ = {isa = PBXBuildFile; fileRef = BF2C08CC21144ADF0033A697 /* pew-pew-lei.caf */; };
+		BF2C08D12119777E0033A697 /* PublicUse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2C08D02119777E0033A697 /* PublicUse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +33,11 @@
 		BF2C08BA2112E1EA0033A697 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF2C08BD2112E1EA0033A697 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF2C08BF2112E1EA0033A697 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF2C08C621143BD80033A697 /* MyScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScene.swift; sourceTree = "<group>"; };
+		BF2C08C8211444D60033A697 /* ResultScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScene.swift; sourceTree = "<group>"; };
+		BF2C08CB21144ADF0033A697 /* background-music-aac.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-music-aac.caf"; sourceTree = "<group>"; };
+		BF2C08CC21144ADF0033A697 /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
+		BF2C08D02119777E0033A697 /* PublicUse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicUse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +70,30 @@
 		BF2C08AC2112E1E80033A697 /* gameOne */ = {
 			isa = PBXGroup;
 			children = (
+				BF2C08CA21144ADF0033A697 /* Sounds */,
 				BF2C08AD2112E1E80033A697 /* AppDelegate.swift */,
 				BF2C08AF2112E1E80033A697 /* GameScene.sks */,
 				BF2C08B12112E1E80033A697 /* Actions.sks */,
 				BF2C08B32112E1E80033A697 /* GameScene.swift */,
 				BF2C08B52112E1E80033A697 /* GameViewController.swift */,
 				BF2C08B72112E1E80033A697 /* Main.storyboard */,
+				BF2C08C621143BD80033A697 /* MyScene.swift */,
+				BF2C08C8211444D60033A697 /* ResultScene.swift */,
+				BF2C08D02119777E0033A697 /* PublicUse.swift */,
 				BF2C08BA2112E1EA0033A697 /* Assets.xcassets */,
 				BF2C08BC2112E1EA0033A697 /* LaunchScreen.storyboard */,
 				BF2C08BF2112E1EA0033A697 /* Info.plist */,
 			);
 			path = gameOne;
+			sourceTree = "<group>";
+		};
+		BF2C08CA21144ADF0033A697 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				BF2C08CB21144ADF0033A697 /* background-music-aac.caf */,
+				BF2C08CC21144ADF0033A697 /* pew-pew-lei.caf */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,8 +154,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF2C08CE21144ADF0033A697 /* pew-pew-lei.caf in Resources */,
 				BF2C08B92112E1E80033A697 /* Main.storyboard in Resources */,
 				BF2C08B02112E1E80033A697 /* GameScene.sks in Resources */,
+				BF2C08CD21144ADF0033A697 /* background-music-aac.caf in Resources */,
 				BF2C08BB2112E1EA0033A697 /* Assets.xcassets in Resources */,
 				BF2C08BE2112E1EA0033A697 /* LaunchScreen.storyboard in Resources */,
 				BF2C08B22112E1E80033A697 /* Actions.sks in Resources */,
@@ -146,8 +171,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF2C08C721143BD80033A697 /* MyScene.swift in Sources */,
 				BF2C08B42112E1E80033A697 /* GameScene.swift in Sources */,
 				BF2C08B62112E1E80033A697 /* GameViewController.swift in Sources */,
+				BF2C08C9211444D60033A697 /* ResultScene.swift in Sources */,
+				BF2C08D12119777E0033A697 /* PublicUse.swift in Sources */,
 				BF2C08AE2112E1E80033A697 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,7 +324,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WGX7CRRVZ2;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = gameOne/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -314,7 +344,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WGX7CRRVZ2;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = gameOne/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
