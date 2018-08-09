@@ -8,6 +8,7 @@
 
 import UIKit
 
+let screenSize = UIScreen.main.bounds.size
 let screenWidth = UIScreen.main.bounds.width
 let screenHeight = UIScreen.main.bounds.height
 

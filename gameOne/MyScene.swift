@@ -9,31 +9,62 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class MyScene: SKScene
 {
     var start: CGPoint!
+    var monsters: [SKSpriteNode] = {
+        let array = [SKSpriteNode]()
+        return array
+    }()
+    var projectiles: [SKSpriteNode] = {
+        let array = [SKSpriteNode]()
+        return array
+    }()
+    var monstersDestroyed = 0
     
-    override init()
+    var bgmPlayer: AVAudioPlayer = {
+        let bgmPath = Bundle.main.path(forResource: "background-music-aac", ofType: "caf")
+        let player = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: bgmPath!))
+        return player
+    }()
+    var projectileSoundEffectAction: SKAction = {
+        let action = SKAction.playSoundFileNamed("pew-pew-lei.caf", waitForCompletion: false)
+        return action
+    }()
+    
+    
+    // 初始化
+    override func didMove(to view: SKView)
     {
-        super.init()
+        self.size = screenSize
+        self.backgroundColor = UIColor.green
+        
+//        bgmPlayer.play()
+        addPlayer()
+        cycle()
     }
     
-    override init(size: CGSize)
+    
+    // MARK: === 添加忍者
+    func addPlayer()
     {
-        super.init(size: size)
-        
-        self.backgroundColor = UIColor.green
         let player = SKSpriteNode(imageNamed: "player")
         start = CGPoint(x: screenWidth / 2, y: player.size.height / 2)
         player.position = start
         self.addChild(player)
-        
-        addMonster()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    
+    // MARK: === 循环
+    func cycle()
+    {
+        let actionAddMonster = SKAction.run {
+            self.addMonster()
+        }
+        let actionWaitNextMonster = SKAction.wait(forDuration: 1.0)
+        self.run(SKAction.repeatForever(SKAction.sequence([actionAddMonster, actionWaitNextMonster])))
     }
     
     
@@ -60,9 +91,11 @@ class MyScene: SKScene
         let actionMove = SKAction.moveTo(y: minY, duration: TimeInterval(actualDuration))
         monster.run(actionMove) {
             monster.removeFromParent()
-            self.addMonster()
+            self.monsters.removeFirst()
+            self.changeToResultSceneWithWon(false)
         }
         
+        monsters.append(monster)
     }
     
     
@@ -96,15 +129,63 @@ class MyScene: SKScene
             let realMoveDuration = length / Float(screenHeight)
             
             let moveAction = SKAction.move(to: realDest, duration: TimeInterval(realMoveDuration))
-            
-            projectile.run(moveAction, completion: {
+            projectile.run(SKAction.group([moveAction, projectileSoundEffectAction]), completion: {
                 projectile.removeFromParent()
+                self.projectiles.removeFirst()
             })
             
+            projectiles.append(projectile)
         }
-        
     }
     
     
+    // MARK: === 检测碰撞
+    override func update(_ currentTime: TimeInterval)
+    {
+        var projectilesToDelete = [SKSpriteNode]()
+        var monstersToDelete = [SKSpriteNode]()
+        
+        projectiles.forEach { (projectile) in
+            
+            monsters.forEach({ (monster) in
+                
+                if (projectile.frame.intersects(monster.frame))
+                {
+                    monstersToDelete.append(monster)
+                    projectilesToDelete.append(projectile)
+                }
+            })
+        }
+        
+        monstersToDelete.forEach { (monster) in
+            
+            let temp = self.monsters.filter {$0 != monster}
+            self.monsters = temp
+            monster.removeFromParent()
+            
+            self.monstersDestroyed += 1
+            if (self.monstersDestroyed >= 30)
+            {
+                changeToResultSceneWithWon(true)
+            }
+        }
+        projectilesToDelete.forEach { (projectile) in
+            
+            let temp = self.projectiles.filter {$0 != projectile}
+            self.projectiles = temp
+            projectile.removeFromParent()
+        }
+    }
     
+    
+    // MARK: === 结束
+    func changeToResultSceneWithWon(_ won: Bool)
+    {
+        bgmPlayer.stop()
+        
+        let scene = ResultScene()
+        scene.won = won
+        let reveal = SKTransition.reveal(with: .down, duration: 1.0)
+        self.view?.presentScene(scene, transition: reveal)
+    }
 }

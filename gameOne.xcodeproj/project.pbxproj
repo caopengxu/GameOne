@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF16D948211B012C007DABF3 /* player.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BF16D947211B012C007DABF3 /* player.atlas */; };
 		BF2C08AE2112E1E80033A697 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2C08AD2112E1E80033A697 /* AppDelegate.swift */; };
 		BF2C08B02112E1E80033A697 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BF2C08AF2112E1E80033A697 /* GameScene.sks */; };
 		BF2C08B22112E1E80033A697 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = BF2C08B12112E1E80033A697 /* Actions.sks */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF16D947211B012C007DABF3 /* player.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = player.atlas; sourceTree = "<group>"; };
 		BF2C08AA2112E1E80033A697 /* gameOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gameOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF2C08AD2112E1E80033A697 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF2C08AF2112E1E80033A697 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -70,11 +72,12 @@
 		BF2C08AC2112E1E80033A697 /* gameOne */ = {
 			isa = PBXGroup;
 			children = (
+				BF16D947211B012C007DABF3 /* player.atlas */,
+				BF2C08B12112E1E80033A697 /* Actions.sks */,
+				BF2C08AF2112E1E80033A697 /* GameScene.sks */,
+				BF2C08B32112E1E80033A697 /* GameScene.swift */,
 				BF2C08CA21144ADF0033A697 /* Sounds */,
 				BF2C08AD2112E1E80033A697 /* AppDelegate.swift */,
-				BF2C08AF2112E1E80033A697 /* GameScene.sks */,
-				BF2C08B12112E1E80033A697 /* Actions.sks */,
-				BF2C08B32112E1E80033A697 /* GameScene.swift */,
 				BF2C08B52112E1E80033A697 /* GameViewController.swift */,
 				BF2C08B72112E1E80033A697 /* Main.storyboard */,
 				BF2C08C621143BD80033A697 /* MyScene.swift */,
@@ -158,6 +161,7 @@
 				BF2C08B92112E1E80033A697 /* Main.storyboard in Resources */,
 				BF2C08B02112E1E80033A697 /* GameScene.sks in Resources */,
 				BF2C08CD21144ADF0033A697 /* background-music-aac.caf in Resources */,
+				BF16D948211B012C007DABF3 /* player.atlas in Resources */,
 				BF2C08BB2112E1EA0033A697 /* Assets.xcassets in Resources */,
 				BF2C08BE2112E1EA0033A697 /* LaunchScreen.storyboard in Resources */,
 				BF2C08B22112E1E80033A697 /* Actions.sks in Resources */,
